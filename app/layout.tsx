@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
+import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,13 +28,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <header>
-          <h1>Hello Note Hub</h1>
-        </header>
+        <TanStackProvider>
+          <Header />
 
-        <main>{children}</main>
+          {children}
 
-        <footer></footer>
+          <Footer />
+        </TanStackProvider>
       </body>
     </html>
   );
